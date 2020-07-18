@@ -8,7 +8,7 @@ You can plug in your own models for the policy and value (keras model interface)
 
 An example:
 
-'''python
+'''python 
 pi, q, tpi and tq are the main and target policy and value nets
 
 pi_optimizer = keras.optimizers.Adam(0.001)
