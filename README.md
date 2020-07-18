@@ -8,24 +8,17 @@ You can plug in your own models for the policy and value (keras model interface)
 
 An example:
 
-'''python 
-pi, q, tpi and tq are the main and target policy and value nets
-
+'''python
+# , q, tpi and tq are the main and target policy and value nets
 pi_optimizer = keras.optimizers.Adam(0.001)
 q_optimizer = keras.optimizers.Adam(0.002)
-
-
-MAX_BUFFER_SIZE = 100000
-INIT_BUFFER_SIZE = 4098
-
 replay_memory = ReplayQueue(MAX_BUFFER_SIZE)
-
 class Trig:
 	def __init__(self):
 		self.cnt = 0
 		self.pi = pi
 		self.test_env = gym.make('Pendulum-v0')
-	
+
 	def __call__(self):
 		self.cnt += 1
 		state = self.test_env.reset()
@@ -36,13 +29,10 @@ class Trig:
 			action = pi(np.asarray(state).reshape([1, -1]))
 			state, reward, done, indo = self.test_env.step(action[0].numpy())
 			self.test_env.render()
-			treward += reward
-		
+			treward += reward	
 		print('Episode', self.cnt, 'Total Reward', treward)
-
 trigger = Trig()
 ddpg = DDPG(pi, q, tpi, tq, pi_optimizer, q_optimizer, env, replay_memory, GAMMA, RHO, SIGMA, 64, 4098, trigger)
-
 
 while trigger.cnt < 200:
 	ddpg.step()
