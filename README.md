@@ -2,7 +2,7 @@
 
 A pluggable implementation of DDPG (off policy continuous control)
   
-You can plug in your own models for the policy and value (keras model interface), any environment (gym environment), along with custom processes that have to be triggered after each episode (in the form of a callable object), optimizers, replay memory objects (where sampling and insertion can be cutom defined in any way)
+You can plug in your own models for the policy and value (keras model interface), any environment (gym environment), along with custom processes that have to be triggered after each episode (in the form of a callable object), optimizers, replay memory objects (where sampling and insertion can be custom defined in any way)
 
 ![A test over the pendulum environment](gif/ezgif-6-7e2c910a6a60.gif)
 
