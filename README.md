@@ -9,7 +9,7 @@ You can plug in your own models for the policy and value (keras model interface)
 An example:
 
 ```python
-# q, tpi and tq are the main and target policy and value nets
+# pi, q, tpi and tq are the main and target policy and value nets
 pi_optimizer = keras.optimizers.Adam(0.001)
 q_optimizer = keras.optimizers.Adam(0.002)
 replay_memory = ReplayQueue(MAX_BUFFER_SIZE)
